@@ -39,26 +39,26 @@ export default function ListOfMovies({ route, navigation }) {
     <SafeAreaView style={styles.container}>
       {/* header */}
       <View style={styles.header}>
-        
-      <View style={styles.btnBack}>
-        <TouchableOpacity
-          onPress={() => RootNavigation.navigate("Home")}
-          style={[
-            styles.btn,
-            {
-              borderTopStartRadius: 50,
-              borderBottomStartRadius: 50,
-            },
-          ]}
-        >
-          <Text style={{ color: colors.colorWhite248RGB }}>BACK</Text>
-        </TouchableOpacity>
-       </View>
+        <View style={styles.btnBack}>
+          <TouchableOpacity
+            onPress={() => RootNavigation.navigate("Home")}
+            style={[
+              styles.btn,
+              {
+                borderTopStartRadius: 50,
+                borderBottomStartRadius: 50,
+              },
+            ]}
+          >
+            <Text style={{ color: colors.colorWhite248RGB }}>BACK</Text>
+          </TouchableOpacity>
+        </View>
 
         <Text style={styles.textHeader}>List of movies:</Text>
         {/* back home btn */}
       </View>
       {/* list of movies */}
+      {/* sss */}
       <ScrollView style={styles.container}>
         <View style={styles.listOfMovies}>
           {movieStack.length > 0 && movieStack ? (
@@ -95,7 +95,7 @@ export default function ListOfMovies({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'black'
+    backgroundColor: "black",
   },
   listOfMovies: {
     flexDirection: "row",
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     // paddingTop: 40,
     width: "100%",
     alignItems: "center",
-    backgroundColor:'blue'
+    backgroundColor: "blue",
   },
   textHeader: {
     fontWeight: "bold",
