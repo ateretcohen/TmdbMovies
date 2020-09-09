@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     color:'white',
-
   },
   headerView:{
     width:'97%',
@@ -106,7 +105,7 @@ const styles = StyleSheet.create({
     height:60,
     alignItems:'center',
     justifyContent: "center",
-    opacity:0.8,
+    opacity:0.9,
     marginBottom:5
   },
   btnsBox: {
@@ -122,7 +121,6 @@ const styles = StyleSheet.create({
     opacity:0.9,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor:'#6FCF97',
     borderWidth: 0,
     borderWidth: 1,
   },

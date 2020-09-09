@@ -16,6 +16,8 @@ import "react-native-gesture-handler";
 import * as RootNavigation from "../RootNavigations.js";
 import { DataStorage } from "../components/DataMoviesStorage";
 import colors from "./Colors";
+// import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function ListOfMovies({ route, navigation }) {
   //   const { addMovieToFavorite, removeMovieFromFavorite } = route.params;
@@ -40,21 +42,24 @@ export default function ListOfMovies({ route, navigation }) {
       {/* header */}
       <View style={styles.header}>
         <View style={styles.btnBack}>
-          <TouchableOpacity
+        {/* <AntDesign name="left" size={25} color="white"/> */}
+        <AntDesign name="arrowleft" size={24} color="white" 
+        onPress={() => RootNavigation.navigate("Home")}/>
+          {/* <TouchableOpacity
             onPress={() => RootNavigation.navigate("Home")}
-            style={[
-              styles.btn,
-              {
-                borderTopStartRadius: 50,
-                borderBottomStartRadius: 50,
-              },
-            ]}
+            // style={[
+            //   styles.btn,
+            //   {
+            //     borderTopStartRadius: 50,
+            //     borderBottomStartRadius: 50,
+            //   },
+            // ]}
           >
-            <Text style={{ color: colors.colorWhite248RGB }}>BACK</Text>
-          </TouchableOpacity>
+            <Text style={{ color: colors.colorWhite248RGB }}>HOME</Text>
+          </TouchableOpacity> */}
         </View>
 
-        <Text style={styles.textHeader}>List of movies:</Text>
+        <Text style={styles.textHeader}>POPULAR MOVIES</Text>
         {/* back home btn */}
       </View>
       {/* list of movies */}
@@ -78,13 +83,13 @@ export default function ListOfMovies({ route, navigation }) {
             <View style={{ flex: 1, alignItems: "center", marginTop: 50 }}>
               {/* in case of empty movies in favorite page */}
               {/* <ActivityIndicator size="large" color="blue" /> */}
-              <Text style={{ fontSize: 17 }}>
+              <Text style={{ fontSize: 17,color:'red' }}>
                 There are no movies in favorite list
               </Text>
-              <Image
+              {/* <Image
                 style={{ width: "70%", height: 200 }}
                 source={require("../assets/background/empty.jpg")}
-              />
+              /> */}
             </View>
           )}
         </View>
@@ -102,24 +107,25 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "center",
-    // paddingTop: 20,
   },
   header: {
-    // paddingTop: 40,
     width: "100%",
     alignItems: "center",
-    backgroundColor: "blue",
+    backgroundColor:'#022C80',
+    paddingBottom:10,
+    opacity:0.7,
+    paddingTop:10
   },
   textHeader: {
+    fontSize: 30,
     fontWeight: "bold",
-    fontSize: 28,
-    textDecorationLine: "underline",
+    color:'white',
   },
 
   btnBack: {
     width: "100%",
     justifyContent: "flex-start",
-    paddingTop: "7%",
+    paddingTop: "10%",
     paddingStart: "5%",
   },
   btn: {
@@ -131,6 +137,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 1,
     borderColor: "white",
-    borderRadius: 10,
+     borderRadius: 10,
   },
 });

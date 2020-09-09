@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -14,9 +14,11 @@ import * as RootNavigation from "../RootNavigations.js";
 import "react-native-gesture-handler";
 import { DataStorage } from "../components/DataMoviesStorage";
 import colors from "./Colors";
+import { AntDesign } from '@expo/vector-icons';
 
 export default function MovieDetails({ route, navigation }) {
   const { movie, index } = route.params;
+  const [error, setError]= useState('');
   //   const movie = {
   //     title: "Hard Kill",
   //     poster_path: "/kPzcvxBwt7kEISB9O4jJEuBn72t.jpg",
@@ -39,6 +41,7 @@ export default function MovieDetails({ route, navigation }) {
 
   //   remove movie from favorite list
   const removeMovieFromFavorite = (index) => {
+    setError('')
     setFavoriteList(favoriteList.filter((item) => item.id !== index));
   };
 
@@ -50,42 +53,57 @@ export default function MovieDetails({ route, navigation }) {
     if (duplicateMovies == undefined) {
       setFavoriteList([...favoriteList, movie]);
     }
+    else{
+      setError('movie exist on your list')
+    }
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground style={styles.background} source={imageAdress}>
         <View style={styles.btnBack}>
-          <TouchableOpacity
+        <AntDesign name="close" size={30} color="white" 
+         onPress={() => RootNavigation.navigate("ListOfMovies")}/>
+
+          {/* <TouchableOpacity
             onPress={() => RootNavigation.navigate("ListOfMovies")}
-            style={[
-              styles.btn,
-              {
-                borderTopStartRadius: 50,
-                borderBottomStartRadius: 50,
-              },
-            ]}
+            // style={[
+            //   styles.btn,
+            //   {
+            //     borderTopStartRadius: 50,
+            //     borderBottomStartRadius: 50,
+            //   },
+            // ]}
           >
             <Text style={{ color: colors.colorWhite248RGB }}>BACK</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         {/* details */}
         <View style={styles.detailsAndBtn}>
           <View style={styles.detailsSquere}>
             <View style={styles.detailLine}>
-              <Text style={styles.headers}>Name </Text>
+              <Text style={styles.headers}>NAME </Text>
               <Text style={styles.detailText}>{movie.title} </Text>
             </View>
 
             <View style={styles.detailLine}>
-              <Text style={styles.headers}>Summary </Text>
+              <Text style={styles.headers}>SUMMERY </Text>
               <Text style={styles.detailText}>{movie.overview} </Text>
             </View>
             <View style={styles.detailLine}>
-              <Text style={styles.headers}>Rating </Text>
+              <Text style={styles.headers}>RATING</Text>
               <Text style={styles.detailText}>{movie.vote_average} </Text>
             </View>
           </View>
+          {
+            error.length>0?
+            <View style={styles.errorView}>
+             <Text style={styles.error}>{error}</Text>
+          </View>
+          :null
+          }
+          
+         
           <View style={styles.btnsRow}>
             <TouchableOpacity
               onPress={() => {
@@ -93,13 +111,13 @@ export default function MovieDetails({ route, navigation }) {
               }}
               style={styles.btn}
             >
-              <Text style={{ color: "white" }}>Add</Text>
+              <Text style={styles.btnText}>ADD</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => removeMovieFromFavorite(index)}
               style={styles.btn}
             >
-              <Text style={{ color: "white" }}>Remove</Text>
+              <Text style={styles.btnText}>REMOVE</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -110,6 +128,7 @@ export default function MovieDetails({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'black'
   },
   background: {
     flex: 1,
@@ -117,19 +136,20 @@ const styles = StyleSheet.create({
   btnBack: {
     width: "100%",
     justifyContent: "flex-start",
-    paddingTop: "7%",
+    paddingTop: "10%",
     paddingStart: "5%",
   },
   btn: {
-    width: 80,
-    height: 40,
-    backgroundColor: colors.colorBlueLight,
-    // color: "white",
-    justifyContent: "center",
+    width: 180,
+    height: 70,
     alignItems: "center",
+    justifyContent: "center",
+    backgroundColor:'#022C80',
+    borderWidth: 0,
     borderWidth: 1,
-    borderColor: "white",
-    borderRadius: 10,
+    borderBottomColor:'#022C80',
+    opacity:0.9,
+
   },
   detailsAndBtn: {
     flex: 1,
@@ -138,17 +158,20 @@ const styles = StyleSheet.create({
     paddingBottom: "10%",
   },
   detailLine: {
-    backgroundColor: colors.colorBattleshipGrey,
+    backgroundColor: 'black',
     borderWidth: 1,
-    borderColor: colors.colorCloud,
-    borderRadius: 10,
+     borderColor: 'black',
+    // borderRadius: 10,
     alignItems: "center",
     margin: 5,
     padding: 5,
+    opacity:0.8,
   },
   headers: {
     fontSize: 18,
-    textDecorationLine: "underline",
+    color:'white',
+    fontWeight:'bold'
+    // textDecorationLine: "underline",
   },
   detailText: {
     textAlign: "center",
@@ -156,7 +179,26 @@ const styles = StyleSheet.create({
   },
   btnsRow: {
     flexDirection: "row",
-    justifyContent: "space-around",
+     justifyContent: "space-around",
+     alignItems: "center",
     width: "100%",
+    marginTop:5
   },
+  btnText:{
+    color:'white',
+    fontWeight:'bold'
+  },
+  error:{
+    color:'white',
+    fontSize:15,
+  },
+  errorView:{
+    backgroundColor: 'red',
+    borderWidth: 1,
+    borderColor: 'red',
+    alignItems: "center",
+    margin: 5,
+    padding: 5,
+    width:'100%'
+  }
 });
