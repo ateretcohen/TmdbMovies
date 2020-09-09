@@ -11,7 +11,6 @@ import "react-native-gesture-handler";
 import axios from "axios";
 import { DataStorage } from "../components/DataMoviesStorage";
 // RootNavigation.navigate("homePageMain");
-
 export default function Welcome() {
   const [favoriteList, setFavoriteList] = useContext(DataStorage);
   const [movieList, setMovieList] = useState([]);

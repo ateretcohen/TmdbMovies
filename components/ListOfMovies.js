@@ -37,6 +37,9 @@ export default function ListOfMovies({ route, navigation }) {
   }
   return (
     <SafeAreaView style={styles.container}>
+      {/* header */}
+      <View style={styles.header}>
+        
       <View style={styles.btnBack}>
         <TouchableOpacity
           onPress={() => RootNavigation.navigate("Home")}
@@ -50,9 +53,8 @@ export default function ListOfMovies({ route, navigation }) {
         >
           <Text style={{ color: colors.colorWhite248RGB }}>BACK</Text>
         </TouchableOpacity>
-      </View>
-      {/* header */}
-      <View style={styles.header}>
+       </View>
+
         <Text style={styles.textHeader}>List of movies:</Text>
         {/* back home btn */}
       </View>
@@ -93,6 +95,7 @@ export default function ListOfMovies({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'black'
   },
   listOfMovies: {
     flexDirection: "row",
@@ -105,6 +108,7 @@ const styles = StyleSheet.create({
     // paddingTop: 40,
     width: "100%",
     alignItems: "center",
+    backgroundColor:'blue'
   },
   textHeader: {
     fontWeight: "bold",
