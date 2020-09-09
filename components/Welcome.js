@@ -69,20 +69,21 @@ export default function Welcome() {
     <View style={styles.container}>
       <ImageBackground
         style={styles.backgroundPic}
+        // source={"https://i.pinimg.com/originals/ab/10/17/ab1017833dbb7e43c052a9778d145ac7.jpg"}
         source={require("../assets/background/welcome.jpg")}
-      >
-        <Text style={styles.header}>welcome</Text>
+        >
+        <View style={styles.headerView}><Text style={styles.header}>WELCOME</Text></View>
         <View style={styles.btnsBox}>
           {/* Popular btn */}
           <TouchableOpacity onPress={goToPopular}>
-            <View style={[styles.btn, { backgroundColor: "#d3d3d3" }]}>
-              <Text>Popular movies</Text>
+            <View style={[styles.btn, { backgroundColor: "#2F80ED" }]}>
+              <Text style={styles.btnText}>POPULAR MOVIES</Text>
             </View>
           </TouchableOpacity>
           {/* Favority btn */}
           <TouchableOpacity onPress={goToFavorite}>
-            <View style={[styles.btn, { backgroundColor: "#8fbc8f" }]}>
-              <Text>Favorite movies</Text>
+            <View style={[styles.btn, { backgroundColor: "#01A3FE" }]}>
+              <Text style={styles.btnText}>FEVORITE MOVIES</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -95,29 +96,43 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    fontSize: 34,
+    fontSize: 30,
     fontWeight: "bold",
-    textDecorationLine: "underline",
+    color:'white',
+
+  },
+  headerView:{
+    width:'97%',
+    backgroundColor:'#022C80',
+    height:60,
+    alignItems:'center',
+    justifyContent: "center",
+    opacity:0.8,
+    marginBottom:5
   },
   btnsBox: {
-    flex: 0.6,
     flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
+     justifyContent: "space-around",
+     alignItems: "center",
     width: "100%",
+    marginBottom:50
   },
   btn: {
-    width: 150,
-    height: 60,
+    width: 195,
+    height: 90,
+    opacity:0.9,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 15,
-    borderColor: "blue",
-    borderWidth: 1,
+    backgroundColor:'#6FCF97',
+    borderWidth: 0
   },
   backgroundPic: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: 'flex-end',
   },
+  btnText:{
+    color:'white',
+    fontWeight:'bold'
+  }
 });
