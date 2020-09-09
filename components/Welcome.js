@@ -124,7 +124,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor:'#6FCF97',
-    borderWidth: 0
+    borderWidth: 0,
+    borderWidth: 1,
   },
   backgroundPic: {
     flex: 1,
